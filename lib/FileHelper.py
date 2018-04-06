@@ -29,8 +29,9 @@ class FileHelper:
         :param filename:
         :return:
         """
-        if os.path.isfile(self.filename):
-            self.file = open(self.filename, self.type)
+        if not os.path.isfile(self.filename):
+            self.createFile()
+        self.file = open(self.filename, self.type)
 
     def close(self):
         """
@@ -38,3 +39,7 @@ class FileHelper:
         :return:
         """
         self.file.close()
+
+    def createFile(self):
+        f = open(self.filename, 'w')
+        f.close()

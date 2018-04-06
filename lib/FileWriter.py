@@ -23,5 +23,7 @@ class FileWriter(FileHelper):
         :param text:
         :return:
         """
+        if not self.file:
+            return
         self.file.write(text)
         self.file.write('\n')

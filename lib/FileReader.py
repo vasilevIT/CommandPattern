@@ -20,6 +20,8 @@ class FileReader(FileHelper):
     def readLine(self):
         """
         Читает строку из файла
-        :return:
+        :return: str
         """
+        if not self.file:
+            return ''
         return self.file.readline()
