@@ -5,12 +5,14 @@
  Time: 00:09
 
 """
+import time
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QMessageBox, QPushButton, QVBoxLayout, qApp, QTextEdit, QLabel, \
     QToolTip
 
 from lib.FileReader import FileReader
 from lib.FileWriter import FileWriter
+from lib.Logger import Logger
 
 
 class NotepadForm(QWidget):
@@ -80,6 +82,8 @@ class NotepadForm(QWidget):
             if not temp_str:
                 break
             text += temp_str
+        logger = Logger()
+        logger.log("readTextFromFile()")
         return text
 
     def saveText(self):
@@ -87,10 +91,14 @@ class NotepadForm(QWidget):
         filewriter.open()
         filewriter.writeLine(self.txtEdit.toPlainText())
         filewriter.close()
+        logger = Logger()
+        logger.log("saveText()")
 
     def restoreText(self):
         text = self.readTextFromFile()
         self.txtEdit.setText(text)
+        logger = Logger()
+        logger.log("restoreText()")
 
     def clearText(self, event):
 
@@ -100,3 +108,5 @@ class NotepadForm(QWidget):
 
         if reply == QMessageBox.Yes:
             self.txtEdit.setText('')
+            logger = Logger()
+            logger.log("clearText()")

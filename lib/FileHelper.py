@@ -16,11 +16,15 @@ class FileHelper:
 
     TYPE_READ = 'r'
     TYPE_WRITE = 'w'
+    TYPE_WRITE_APPEND = 'a+'
 
     def __init__(self, filename):
         self.file = None
         self.filename = filename
         self.type = self.TYPE_READ
+
+    def setType(self, type):
+        self.type = type
 
     def open(self):
         """
