@@ -9,10 +9,14 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QMessageBox, QPushButton, QVBoxLayout, qApp, QTextEdit, QLabel, \
     QToolTip
 
+from lib.FileReader import FileReader
+from lib.FileWriter import FileWriter
+
 
 class NotepadForm(QWidget):
     def __init__(self):
         super().__init__()
+        self.userfile = "simplyfile.txt"
         self.initUI()
 
     def initUI(self):
@@ -68,15 +72,25 @@ class NotepadForm(QWidget):
         self.move(qr.topLeft())
 
     def readTextFromFile(self):
-        #     TODO: Need to implement
-        return ""
+        filereader = FileReader(self.userfile)
+        filereader.open()
+        text = ''
+        while True:
+            temp_str = filereader.readLine()
+            if not temp_str:
+                break
+            text += temp_str
+        return text
 
     def saveText(self):
-        #     TODO: Need to implement
-        pass
+        filewriter = FileWriter(self.userfile)
+        filewriter.open()
+        filewriter.writeLine(self.txtEdit.toPlainText())
+        filewriter.close()
 
     def restoreText(self):
-        pass
+        text = self.readTextFromFile()
+        self.txtEdit.setText(text)
 
     def clearText(self, event):
 
