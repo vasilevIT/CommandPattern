@@ -17,7 +17,7 @@ class ICommand():
 
     def __init__(self, form):
         """
-        :param gui.NotepadForm form:
+        :param NotepadForm form:
         """
         self.form = form
 

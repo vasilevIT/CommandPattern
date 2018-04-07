@@ -17,7 +17,7 @@ class FileReader(FileHelper):
         super().__init__(filename)
         self.type = self.TYPE_READ
 
-    def readLine(self):
+    def readLine(self) -> str:
         """
         Читает строку из файла
         :return: str

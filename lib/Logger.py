@@ -18,7 +18,7 @@ class Logger:
     def __init__(self):
         self.logfile = 'log.txt'
 
-    def setLogFile(self, logfile):
+    def setLogFile(self, logfile: str):
         self.logfile = logfile
 
     def log(self, string):

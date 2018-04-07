@@ -18,12 +18,12 @@ class FileHelper:
     TYPE_WRITE = 'w'
     TYPE_WRITE_APPEND = 'a+'
 
-    def __init__(self, filename):
+    def __init__(self, filename: str):
         self.file = None
         self.filename = filename
         self.type = self.TYPE_READ
 
-    def setType(self, type):
+    def setType(self, type: int):
         self.type = type
 
     def open(self):

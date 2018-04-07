@@ -17,7 +17,7 @@ class FileWriter(FileHelper):
         super().__init__(filename)
         self.type = self.TYPE_WRITE
 
-    def writeLine(self, text):
+    def writeLine(self, text: str):
         """
         Записывает строку в файл
         :param text:
